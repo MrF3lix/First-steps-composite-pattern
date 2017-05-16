@@ -29,6 +29,8 @@ To prevent that the Article class has child parts, the implementation in the Bas
 
 The biggest issues I faced during the implementation was the creation of the tree structure from a flat list. To solve this I've created an extension class which provides the BuildTree() Method to the list of parts. 
 
+Another issue I had was the output of the tree for which I used a breadt-first traversal. The problem was to display the element on the correct level. For each depth level a "-" should be shown in front of the element. To solve this I've added a variable to store the level and a variable to store the count of elements which are on this level. When taking an element out of the queue the count of elements on this level is reduced. If the count of elements on a level reaches 0 it will add 1 to the depth variable.
+
 ## Known issues
 
-1. Only the first and second level are added to the tree. I suspect that when i get the composite object (AddCHildElements in TreeEnumerableExtension.cs) I add the child elements to this composite object and not to the currentNode object. I could implement the AddChild/RemoveChild Method on the BaseMachineComponent class but then an article object can add a child element aswell.
+1. None at the moment :)
