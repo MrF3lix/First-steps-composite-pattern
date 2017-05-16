@@ -1,0 +1,6 @@
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterial\bin\Debug\BillOfMaterial.exe.config
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterial\bin\Debug\BillOfMaterial.exe
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterial\bin\Debug\BillOfMaterial.pdb
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterial\obj\Debug\BillOfMaterial.csprojResolveAssemblyReference.cache
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterial\obj\Debug\BillOfMaterial.exe
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterial\obj\Debug\BillOfMaterial.pdb

@@ -1,0 +1,9 @@
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\bin\Debug\BillOfMaterialTest.dll
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\bin\Debug\BillOfMaterialTest.pdb
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\bin\Debug\BillOfMaterial.exe
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\bin\Debug\BillOfMaterial.pdb
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\obj\Debug\BillOfMaterialTest.csprojResolveAssemblyReference.cache
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\obj\Debug\BillOfMaterialTest.dll
+C:\Users\saa\Documents\GitHub\First-steps-composite-pattern\src\BillOfMaterial\BillOfMaterialTest\obj\Debug\BillOfMaterialTest.pdb
