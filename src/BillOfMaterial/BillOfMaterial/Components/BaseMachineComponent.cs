@@ -1,4 +1,4 @@
-﻿namespace BillOfMaterial
+﻿namespace MachinePartsList.Components
 {
     public abstract class BaseMachineComponent
     {
@@ -6,7 +6,7 @@
 
         public int Id { get; set; }
 
-        public virtual MachineComponent GetComposite()
+        public virtual Module GetComposite()
         {
             return null;
         }
@@ -15,5 +15,9 @@
         {
             return $"{Name} - {Id}";
         }
+
+        public virtual void AddChild(BaseMachineComponent component){}
+
+        public virtual void RemoveChild(BaseMachineComponent component){}
     }
 }

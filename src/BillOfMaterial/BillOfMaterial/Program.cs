@@ -1,43 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
-using BillOfMaterial.Fixtures;
-using BillOfMaterial.Helper;
+using System.Linq;
+using MachinePartsList.Components;
+using MachinePartsList.Fixtures;
+using MachinePartsList.Helper;
 
-namespace BillOfMaterial
+namespace MachinePartsList
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var dataFixture = new DataFixture();
-            var positionListFromDb = dataFixture.GetBillOfMaterialPositions();
+            var positionListFromDb = dataFixture.GetMachineParts();
             var componentTree = positionListFromDb.BuildTree();
 
-            DisplayTree(componentTree);
+            DisplayTreeBfs(componentTree.First());
 
             Console.ReadKey();
         }
 
-        private static void DisplayTree(IEnumerable<BaseMachineComponent> components)
+        private static void DisplayTreeBfs(BaseMachineComponent rootComponent)
         {
-            foreach (var component in components)
+            var currentLevel = 0;
+            var depthIncrease = 1;
+            var nextDepthIncrease = 0;
+
+            var queue = new Queue<BaseMachineComponent>();
+            queue.Enqueue(rootComponent);
+
+            while (queue.Any())
             {
-                DisplayPosition(component);
+                var node = queue.Dequeue();
+                
+                PrintLine(node.Display(), currentLevel);
+
+                var composite = node.GetComposite();
+                if (composite == null)
+                {
+                    depthIncrease--;
+                    continue;
+                }
+
+                nextDepthIncrease += composite.ChildComponents.Count - 1;
+                if (--depthIncrease <= 0)
+                {
+                    currentLevel++;
+                    depthIncrease = nextDepthIncrease;
+                    nextDepthIncrease = 0;
+                }
+
+                foreach (var child in composite.ChildComponents)
+                {
+                    queue.Enqueue(child);
+                }
             }
         }
 
-        private static void DisplayPosition(BaseMachineComponent position)
+        private static void PrintLine(string value, int level)
         {
-            MachineComponent component = position.GetComposite();
-            if (component != null)
+            var output = "";
+            for (var i = 0; i < level; i++)
             {
-                Console.WriteLine("+" + position.Display());
-                DisplayTree(component.ChildComponents);
+                output += "-";
             }
-            else
-            {
-                Console.WriteLine("-" + position.Display());
-            }
+
+            Console.WriteLine(output + value);
         }
     }
 }

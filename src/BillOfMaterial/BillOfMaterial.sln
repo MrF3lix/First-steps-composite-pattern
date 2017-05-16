@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillOfMaterial", "BillOfMaterial\BillOfMaterial.csproj", "{49B1A1BB-192F-48C6-BF11-BEF6054CD782}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachinePartsList", "BillOfMaterial\MachinePartsList.csproj", "{49B1A1BB-192F-48C6-BF11-BEF6054CD782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillOfMaterialTest", "BillOfMaterialTest\BillOfMaterialTest.csproj", "{9D2C5D12-24CF-4C5E-964A-7690D516917A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachinePartsListTest", "BillOfMaterialTest\MachinePartsListTest.csproj", "{9D2C5D12-24CF-4C5E-964A-7690D516917A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,12 +1,29 @@
-﻿namespace BillOfMaterial
+﻿using System.Collections.Generic;
+
+namespace MachinePartsList.Components
 {
     public class Module : BaseMachineComponent
     {
-        public string ModuleNumber { get; set; }
-
-        public override string Display()
+        public Module()
         {
-            return $"{Name} - {Id} - {ModuleNumber}";
+            ChildComponents = new List<BaseMachineComponent>();
+        }
+
+        public ICollection<BaseMachineComponent> ChildComponents { get; }
+
+        public override Module GetComposite()
+        {
+            return this;
+        }
+
+        public override void AddChild(BaseMachineComponent component)
+        {
+            ChildComponents.Add(component);
+        }
+
+        public override void RemoveChild(BaseMachineComponent component)
+        {
+            ChildComponents.Remove(component);
         }
     }
 }

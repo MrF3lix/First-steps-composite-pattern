@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using BillOfMaterial;
-using BillOfMaterial.Fixtures;
-using BillOfMaterial.Helper;
+using MachinePartsList.Components;
+using MachinePartsList.Fixtures;
+using MachinePartsList.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BillOfMaterialTest
+namespace MachinePartsListTest
 {
     [TestClass]
     public class MachineComponentTest
@@ -55,7 +55,7 @@ namespace BillOfMaterialTest
         [TestMethod]
         public void BuildComponentTreeFromPositionsList_Success()
         {
-            var positions = _dataFixture.GetBillOfMaterialPositions();
+            var positions = _dataFixture.GetMachineParts();
 
             var componentTree = positions.BuildTree();
 

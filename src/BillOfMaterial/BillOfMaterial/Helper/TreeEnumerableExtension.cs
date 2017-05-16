@@ -1,23 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BillOfMaterial.InfoObjects;
+using MachinePartsList.Components;
+using MachinePartsList.InfoObjects;
 
-namespace BillOfMaterial.Helper
+namespace MachinePartsList.Helper
 {
     public static class TreeEnumerableExtension
     {
-        public static IEnumerable<BaseMachineComponent> BuildTree(this IEnumerable<BillOfMaterialPositionInfo> positions)
+        public static IEnumerable<BaseMachineComponent> BuildTree(this IEnumerable<MachinePartInfo> part)
         {
             var componentTree = new List<BaseMachineComponent>();
-            var groups = positions.GroupBy(p => p.ParentId);
+            var groups = part.GroupBy(p => p.ParentId);
             var rootElements = groups.FirstOrDefault(p => p.Key.HasValue == false);
-            var allChildElements = groups.Where(p => p.Key.HasValue).ToDictionary(p => p.Key.Value, p => p.OrderBy(m => m.Id).ToList());
-            
+            var allChildElements = groups.Where(p => p.Key.HasValue)
+                .ToDictionary(p => p.Key.Value, p => p.ToList());
+
             if (rootElements != null)
             {
                 foreach (var root in rootElements)
                 {
-                    var component = GetComponentFromPosition(root, allChildElements);
+                    var component = GetComponentFromPart(root, allChildElements.Keys);
                     AddChildElements(component, allChildElements);
                     componentTree.Add(component);
                 }
@@ -27,41 +29,43 @@ namespace BillOfMaterial.Helper
         }
 
         private static void AddChildElements(BaseMachineComponent currentNode,
-            IDictionary<int, List<BillOfMaterialPositionInfo>> childElements)
+            IDictionary<int, List<MachinePartInfo>> childElements)
         {
             if (!childElements.ContainsKey(currentNode.Id))
             {
                 return;
             }
-            
+
             var currentComposite = currentNode.GetComposite();
             if (currentComposite != null)
             {
                 foreach (var child in childElements[currentNode.Id])
                 {
-                    currentComposite.AddChild(GetComponentFromPosition(child, childElements));
-                    AddChildElements(GetComponentFromPosition(child, childElements), childElements);
+                    var childComponent = GetComponentFromPart(child, childElements.Keys);
+
+                    currentNode.AddChild(childComponent);
+                    AddChildElements(childComponent, childElements);
                 }
             }
         }
 
-        private static BaseMachineComponent GetComponentFromPosition(BillOfMaterialPositionInfo position,
-            IDictionary<int, List<BillOfMaterialPositionInfo>> childElements)
+        private static BaseMachineComponent GetComponentFromPart(MachinePartInfo position,
+            IEnumerable<int> parentElementIds)
         {
             BaseMachineComponent component;
-            if (childElements.ContainsKey(position.Id))
+
+            if (parentElementIds.Contains(position.Id))
             {
-                component = new MachineComponent() {Id = position.Id, Name = position.Name};
+                component = new Module {Id = position.Id, Name = position.Name};
                 return component;
             }
 
-            if (position.IsArticle)
+            component = new Article
             {
-                component = new Article() { Id = position.Id, Name = position.Name, LinkToDetailPage = position.AdditionalInformations };
-                return component;
-            }
-
-            component = new Module() { Id = position.Id, Name = position.Name, ModuleNumber = position.AdditionalInformations };
+                Id = position.Id,
+                Name = position.Name,
+                LinkToDetailPage = position.AdditionalInformations
+            };
             return component;
         }
     }

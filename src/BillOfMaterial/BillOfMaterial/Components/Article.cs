@@ -1,8 +1,8 @@
-﻿namespace BillOfMaterial
+﻿namespace MachinePartsList.Components
 {
     public class Article : BaseMachineComponent
     {
-        public string LinkToDetailPage { get; set; }
+        public string LinkToDetailPage { private get; set; }
 
         public override string Display()
         {
